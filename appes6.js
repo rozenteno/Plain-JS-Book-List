@@ -5,6 +5,11 @@ const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
 const locationElement = document.querySelector(".location p");
 
+console.log(iconElement);
+console.log(tempElement);
+console.log(descElement);
+console.log(locationElement);
+
 const weather = {};
 
 weather.temperature = {
@@ -17,15 +22,30 @@ const key = "1e90a349f352c2e3bcc0febbd6ad1fa9";
 function getWeather(latitude, longitude) {
   let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
   fetch(api)
-    .then(function(responde) {
+    .then(function(response) {
       let data = response.json();
       return data;
     })
     .then(function(data) {
       weather.temperature.value = Math.floor(data.main.temp - KELVIN);
-      weather.description = data.weather[0].icon;
-      // weather.iconId
+      weather.description = data.weather[0].description;
+      weather.iconId = data.weather[0].icon;
+      weather.city = data.name;
+      weather.country = data.sys.country;
+      console.log(weather);
+    })
+    .then(function() {
+      displayWeather();
     });
+}
+
+function displayWeather() {
+  iconElement.innerHTML = `<img src="css/icons/black/svg/${
+    weather.iconId
+  }.svg"/>`;
+  tempElement.innerHTML = `${weather.temperature.value}º<span> C</span>`;
+  descElement.innerHTML = weather.description;
+  locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
 
 function setPosition(position) {
