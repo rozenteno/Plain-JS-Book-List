@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
     />
+    <link rel="stylesheet" href="css/main.css" />
     <style>
       .success,
       .error {
@@ -28,8 +29,27 @@
     </style>
   </head>
   <body>
+    <h1 class="text-center">Welcome to Maya's Library</h1>
+    <div class="weather">
+      <div class="weather-msg">
+        <h5>Current temperature is:</h5>
+      </div>
+      <div class="weather-container">
+        <div class="notification"></div>
+        <div class="weather-body">
+          <div class="weather-icon">
+            <img src="css/icons/black/svg/unknown.svg" alt="Weather Icon" />
+            <div class="temperature-value">
+              <p>- º <span>C</span></p>
+            </div>
+            <div class="temperature-description"><p>-</p></div>
+            <div class="location"><p>-</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
-      <h1>Add Book</h1>
+      <h2>Add Book</h2>
       <form id="book-form">
         <div>
           <label for="title">Title</label>
