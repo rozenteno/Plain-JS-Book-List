@@ -27,6 +27,10 @@
 .weather-body {
   padding: 3rem 0;
 }
+.temperature-description {
+  text-transform: capitalize;
+  color: steelblue;
+}
 .weather-body .weather-icon img {
   height: 100px;
 }
